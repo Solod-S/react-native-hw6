@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native"; // как провайдер в реакте обвертка BrowserRouter
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "./redux/store";
@@ -51,7 +51,6 @@ export default function App() {
 
 function RouteSwitcher() {
   const { stateChange } = useSelector((state) => state.auth);
-  console.log(stateChange);
   const dispatch = useDispatch();
 
   useEffect(() => {
