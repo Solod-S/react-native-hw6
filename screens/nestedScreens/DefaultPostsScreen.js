@@ -108,6 +108,8 @@ export default function DefaultPostsScreen({ navigation, route }) {
               latitude,
               comments,
               longitude,
+              avatarImage,
+              login,
             } = item;
 
             return (
@@ -121,6 +123,8 @@ export default function DefaultPostsScreen({ navigation, route }) {
                 latitude={latitude}
                 longitude={longitude}
                 postId={id}
+                avatarImage={avatarImage}
+                login={login}
               />
             );
           }}

@@ -1,15 +1,16 @@
 {
   "expo": {
-    "name": "templates",
-    "slug": "templates",
+    "name": "blogram",
+    "slug": "blogram",
+    "description": "This is awesome app =)",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F89029"
     },
     "updates": {
       "fallbackToCacheTimeout": 0

@@ -13,9 +13,23 @@ function Post({
   country,
   city,
   postId,
+  avatarImage,
+  login,
 }) {
   return (
     <View style={styles.post}>
+      <View style={styles.header}>
+        <View style={styles.avatarWrapper}>
+          <Image
+            source={{ uri: avatarImage, height: 35, width: 35 }}
+            style={styles.avatar}
+          />
+        </View>
+        <View>
+          <Text style={styles.login}>{login}</Text>
+          <Text style={styles.country}>{country}</Text>
+        </View>
+      </View>
       <Image
         source={{ uri: image, height: 300, width: "100%" }}
         style={styles.postImg}
@@ -52,10 +66,10 @@ function Post({
                 name="map-pin"
                 style={styles.postLocationIcon}
                 size={18}
-                color="black"
+                color="orange"
               />
               <Text style={styles.postLocationTitle}>
-                {country} {city}
+                {country}, {city}
               </Text>
             </View>
           </TouchableOpacity>
@@ -68,9 +82,18 @@ function Post({
 export default memo(Post);
 
 const styles = StyleSheet.create({
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  avatarWrapper: { marginRight: 10 },
+  avatar: { borderRadius: 50 },
   post: {
     marginBottom: 32,
   },
+  login: { fontSize: 12, fontFamily: "Roboto-Bold" },
+  country: { fontSize: 12, color: "grey" },
   postImg: {
     width: "100%",
     borderRadius: 8,
@@ -115,5 +138,6 @@ const styles = StyleSheet.create({
     color: "#212121",
     fontFamily: "Roboto-Regular",
     textDecoration: "underlin",
+    color: "grey",
   },
 });

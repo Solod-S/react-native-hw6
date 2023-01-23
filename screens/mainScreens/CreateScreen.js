@@ -41,7 +41,7 @@ const initialState = {
 };
 
 export default function CreateScreen({ navigation }) {
-  const { userId, login } = useSelector((state) => state.auth);
+  const { userId, login, avatarImage } = useSelector((state) => state.auth);
   //location
   const [location, setLocation] = useState("denied");
 
@@ -153,6 +153,7 @@ export default function CreateScreen({ navigation }) {
         date,
         time,
         created,
+        avatarImage,
         comments: 0,
       });
     } catch (error) {
@@ -186,6 +187,7 @@ export default function CreateScreen({ navigation }) {
         longitude: location.coords.longitude,
       });
       setPost((prevState) => ({ ...prevState, region: regionData[0] }));
+      setLoading(false);
     };
 
     try {
@@ -193,7 +195,7 @@ export default function CreateScreen({ navigation }) {
       await makePhoto();
 
       if (location === "granted") {
-        takeLocation();
+        await takeLocation();
       }
     } catch (error) {
       console.log(`takePicture.error`, error);
