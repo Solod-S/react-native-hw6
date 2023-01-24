@@ -151,9 +151,13 @@ export default function ProfileScreen({ navigation }) {
                 city,
                 latitude,
                 longitude,
+                login,
+                avatarImage,
               }) => (
                 <Post
                   navigation={navigation}
+                  avatarImage={avatarImage}
+                  login={login}
                   key={id}
                   title={title}
                   image={photo}
