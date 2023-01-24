@@ -44,8 +44,6 @@ export default function DefaultPostsScreen({ navigation, route }) {
   const fetchPosts = async () => {
     onSnapshot(collection(fsbase, "posts"), (docSnap) => {
       const currentPosts = docSnap.docs.map((doc) => {
-        // const comments = countComments(doc.id);
-        // console.log(comments);
         return { ...doc.data(), id: doc.id };
       });
       const sortedPosts = currentPosts.sort((a, b) => a.created < b.created);
@@ -91,7 +89,6 @@ export default function DefaultPostsScreen({ navigation, route }) {
         </View>
       </View>
       {posts.length > 0 && (
-        // <Text>r</Text>
         <FlatList
           data={posts}
           // initialNumToRender={4}

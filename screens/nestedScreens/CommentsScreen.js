@@ -14,6 +14,7 @@ import {
   TextInput,
   Keyboard,
   Platform,
+  Text,
 } from "react-native";
 
 import "react-native-get-random-values";
@@ -32,11 +33,13 @@ import {
 import { fsbase } from "../../firebase/config";
 
 import Comment from "../../components/Comment/Comment";
+import ProfileDetails from "../../components/ProfileDetails/ProfileDetails";
 
 export default function CommentsScreen({ navigation, route }) {
   const scrollRef = useRef(null);
 
-  const { postId, image } = route.params;
+  const { postId, image, postCountry, postAvatarImage, postLogin } =
+    route.params;
   const { login, userId, avatarImage } = useSelector((state) => state.auth);
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
@@ -160,6 +163,12 @@ export default function CommentsScreen({ navigation, route }) {
       >
         {!isKeyboardVisible && (
           <>
+            <ProfileDetails
+              image={image}
+              postCountry={postCountry}
+              postAvatarImage={postAvatarImage}
+              postLogin={postLogin}
+            />
             <View style={styles.postImgThmb}>
               <Image
                 source={{ uri: route.params.image, height: 300, width: "100%" }}

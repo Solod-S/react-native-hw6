@@ -2,6 +2,7 @@ import React, { memo } from "react";
 
 import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 import { FontAwesome5, Feather } from "@expo/vector-icons";
+import ProfileDetails from "../ProfileDetails/ProfileDetails";
 
 function Post({
   navigation,
@@ -10,26 +11,20 @@ function Post({
   comments,
   longitude,
   latitude,
-  country,
+  country: postCountry,
   city,
   postId,
-  avatarImage,
-  login,
+  avatarImage: postAvatarImage,
+  login: postLogin,
 }) {
   return (
     <View style={styles.post}>
-      <View style={styles.header}>
-        <View style={styles.avatarWrapper}>
-          <Image
-            source={{ uri: avatarImage, height: 35, width: 35 }}
-            style={styles.avatar}
-          />
-        </View>
-        <View>
-          <Text style={styles.login}>{login}</Text>
-          <Text style={styles.country}>{country}</Text>
-        </View>
-      </View>
+      <ProfileDetails
+        image={image}
+        postCountry={postCountry}
+        postAvatarImage={postAvatarImage}
+        postLogin={postLogin}
+      />
       <Image
         source={{ uri: image, height: 300, width: "100%" }}
         style={styles.postImg}
@@ -40,7 +35,13 @@ function Post({
         <TouchableOpacity
           activeOpacity={0.6}
           onPress={() =>
-            navigation.navigate("CommentsScreen", { image, postId })
+            navigation.navigate("CommentsScreen", {
+              image,
+              postId,
+              postCountry,
+              postAvatarImage,
+              postLogin,
+            })
           }
         >
           <View style={styles.postCommentThmb}>
@@ -69,7 +70,7 @@ function Post({
                 color="orange"
               />
               <Text style={styles.postLocationTitle}>
-                {country}, {city}
+                {postCountry}, {city}
               </Text>
             </View>
           </TouchableOpacity>
@@ -82,18 +83,9 @@ function Post({
 export default memo(Post);
 
 const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 10,
-  },
-  avatarWrapper: { marginRight: 10 },
-  avatar: { borderRadius: 50 },
   post: {
     marginBottom: 32,
   },
-  login: { fontSize: 12, fontFamily: "Roboto-Bold" },
-  country: { fontSize: 12, color: "grey" },
   postImg: {
     width: "100%",
     borderRadius: 8,

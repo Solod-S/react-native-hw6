@@ -18,13 +18,11 @@ import { collection, onSnapshot, where, query } from "firebase/firestore";
 import { authSignOutUser } from "../../redux/auth/authOperation";
 
 //components
-import ProfilePost from "../../components/ProfilePost/ProfilePost";
 import Post from "../../components/Post/Post";
 
 //images
 
 const imageBG = require("../../assets/images/screenBg.jpg");
-// const image = require("../../assets/images/postImg1.png");
 const avaLOgo = require("../../assets/images/avatarLogo.png");
 
 //icons
